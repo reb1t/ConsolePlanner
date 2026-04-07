@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11505.172 d18.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console Planner", "Console Planner.csproj", "{A5276127-9C53-D95D-CC7D-41CC4FF585ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5276127-9C53-D95D-CC7D-41CC4FF585ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5276127-9C53-D95D-CC7D-41CC4FF585ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5276127-9C53-D95D-CC7D-41CC4FF585ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5276127-9C53-D95D-CC7D-41CC4FF585ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC0A6D3C-1EB7-4A5F-B2EB-D0EF964DE520}
+	EndGlobalSection
+EndGlobal
