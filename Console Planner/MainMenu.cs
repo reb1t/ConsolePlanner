@@ -1,6 +1,7 @@
 class MainMenu
 {
     private int choice;
+    private int editChoice;
     public void Menu()
     {
         UserData u = new UserData();
@@ -35,39 +36,97 @@ class MainMenu
             }
             else if (choice == 1)
             {
-                Console.WriteLine("Введите новые значения");
-
-                Console.Clear();
-
-                Console.Write("Введите новое имя: ");
-                string name = Console.ReadLine();
-                Console.Clear();
-                int age;
-                Console.Write("Введите новый возраст: ");
-                string ageinput = Console.ReadLine();
-                bool ageCheck = int.TryParse(ageinput, out age);
-                while (!ageCheck)
+                while (true)
                 {
-                    Console.Write("Введите возраст в цифрах: ");
-                    ageinput = Console.ReadLine();
-                    ageCheck = int.TryParse(ageinput, out age);
-                    
+                    Console.Clear();
+                    Console.WriteLine("1.Изменить имя\n2.Изменить возраст\n3.Изменить город\n4.Изменить хобби\n5.Изменить всё\n6.Назад");
+                    input = Console.ReadLine();
+                    proverka = int.TryParse(input, out editChoice);
+                    if(proverka == false)
+                    {
+                        Console.Write("Введите пункт меню: ");
+                        continue;
+                    }
+                    if (editChoice == 1)
+                    {
+                        Console.Write("Введите новое имя: ");
+                        string name = Console.ReadLine();
+                        Console.Clear();
+                        u.SetName(name);
+                        Console.WriteLine("Имя изменено");
+                        Console.ReadKey();
+                    }
+                    else if (editChoice == 2)
+                    {
+                        Console.Write("Введите новый возраст: ");
+                        int age;
+                        string ageinput = Console.ReadLine();
+                        bool ageCheck = int.TryParse(ageinput, out age);
+                        while (!ageCheck)
+                        {
+                            Console.Write("Введите возраст в цифрах: ");
+                            ageinput = Console.ReadLine();
+                            ageCheck = int.TryParse(ageinput, out age);
+
+                        }
+                        Console.Clear();
+                        u.SetAge(age);
+                        Console.WriteLine("Данные изменены");
+                        Console.ReadKey();
+                    }
+                    else if (editChoice == 3)
+                    {
+                        Console.Clear();
+                        Console.Write("Введите новый город: ");
+                        string city = Console.ReadLine();
+                        u.SetCity(city);
+                        Console.WriteLine("Данные изменены");
+                        Console.ReadKey();
+                    }
+                    else if (editChoice == 4)
+                    {
+                        Console.Clear();
+                        Console.Write("Введите свое хобби: ");
+                        string hobby = Console.ReadLine();
+                        u.SetHobby(hobby);
+                        Console.WriteLine("Данные изменены");
+                        Console.ReadKey();
+                    }
+                    else if (editChoice == 5)
+                    {
+                        Console.Clear();
+                        Console.Write("Введите новое значение имени: ");
+                        string name = Console.ReadLine();
+                        Console.Clear();
+                        Console.Write("Введите новый возраст: ");
+                        int age;
+                        string ageinput = Console.ReadLine();
+                        bool ageCheck = int.TryParse(ageinput, out age);
+                        while (!ageCheck)
+                        {
+                            Console.Write("Введите возраст в цифрах: ");
+                            ageinput = Console.ReadLine();
+                            ageCheck = int.TryParse(ageinput, out age);
+
+                        }
+                        Console.Clear();
+                        Console.Write("Введите новый город: ");
+                        string city = Console.ReadLine();
+                        Console.Clear();
+                        Console.Write("Введите свое хобби: ");
+                        string hobby = Console.ReadLine();
+                        Console.Clear();
+                        u.SetData(name, age, city, hobby);
+                        Console.WriteLine("Данные изменены");
+                        Console.ReadKey();
+                        break;
+                    }
+                    else if (editChoice == 6)
+                    {
+                        break;
+                    }
                 }
-                Console.Clear();
-                Console.Write("Введите новый город: ");
-                string city = Console.ReadLine();
-
-                Console.Clear();
-
-                Console.Write("Введите свое хобби: ");
-                string hobby = Console.ReadLine();
-
-                u.SetData(name, age, city, hobby);
-
-                Console.Clear();
-
-                Console.WriteLine("Данные сохранены");
-                Console.ReadKey();
+                
             }
         }
     }

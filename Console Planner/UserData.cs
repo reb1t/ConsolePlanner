@@ -39,4 +39,21 @@ class UserData
         this.city = city;
         this.hobby = hobby;
     }
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+    public void SetAge(int age)
+    {
+        this.age = age;
+    }
+    public void SetCity(string city)
+    {
+        this.city = city;
+    }
+    public void SetHobby(string hobby)
+    {
+        this.hobby = hobby;
+    }
+
 }
