@@ -1,8 +1,10 @@
+//Класс куда попадают все данные пользователя которые он вводит
 class UserData
 { 
-    public string name;
-    public int age;
-    public string city;
+    private string name;
+    private int age;
+    private string city;
+    // Проверка возроста на совершеннолетие
     public string GetAgeStatus()
     {
         if (age < 0)
@@ -18,12 +20,21 @@ class UserData
             return ("Несовершеннолетний");
         }
     }
+    // Вывод всей информации о пользователи
     public string Info()
     {
         return $"Имя: {name}\nВозраст: {age}\nГород: {city}\nЧерез 5 лет вам будет: {FutureAge()}\nСтатус: {GetAgeStatus()}";
     }
+    // Увеличение возраста на 5 лет
     public int FutureAge()
     {
         return age + 5;
+    }
+    // Данные пользователя
+    public void SetData(string name, int age, string city)
+    {
+        this.name = name;
+        this.age = age;
+        this.city = city;
     }
 }
