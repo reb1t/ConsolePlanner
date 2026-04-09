@@ -57,7 +57,12 @@ class MainMenu
                 Console.Write("Введите новый город: ");
                 string city = Console.ReadLine();
 
-                u.SetData(name, age, city);
+                Console.Clear();
+
+                Console.Write("Введите свое хобби: ");
+                string hobby = Console.ReadLine();
+
+                u.SetData(name, age, city, hobby);
 
                 Console.Clear();
 

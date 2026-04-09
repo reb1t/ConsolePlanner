@@ -4,6 +4,7 @@ class UserData
     private string name;
     private int age;
     private string city;
+    private string hobby;
     // Проверка возроста на совершеннолетие
     public string GetAgeStatus()
     {
@@ -23,7 +24,7 @@ class UserData
     // Вывод всей информации о пользователи
     public string Info()
     {
-        return $"Имя: {name}\nВозраст: {age}\nГород: {city}\nЧерез 5 лет вам будет: {FutureAge()}\nСтатус: {GetAgeStatus()}";
+        return $"Имя: {name}\nВозраст: {age}\nГород: {city}\nЧерез 5 лет вам будет: {FutureAge()}\nСтатус: {GetAgeStatus()}\nХобби: {hobby}";
     }
     // Увеличение возраста на 5 лет
     public int FutureAge()
@@ -31,10 +32,11 @@ class UserData
         return age + 5;
     }
     // Данные пользователя
-    public void SetData(string name, int age, string city)
+    public void SetData(string name, int age, string city, string hobby)
     {
         this.name = name;
         this.age = age;
         this.city = city;
+        this.hobby = hobby;
     }
 }
