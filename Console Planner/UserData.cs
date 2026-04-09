@@ -20,6 +20,10 @@ class UserData
     }
     public string Info()
     {
-        return $"Имя: {name}\nВозраст: {age}\nГород: {city}\nЧерез 5 лет вам будет: {age + 5}\nСтатус: {GetAgeStatus()}";
+        return $"Имя: {name}\nВозраст: {age}\nГород: {city}\nЧерез 5 лет вам будет: {FutureAge()}\nСтатус: {GetAgeStatus()}";
+    }
+    public int FutureAge()
+    {
+        return age + 5;
     }
 }
