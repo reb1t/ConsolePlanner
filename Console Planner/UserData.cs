@@ -21,7 +21,7 @@ class UserData
             return ("Несовершеннолетний");
         }
     }
-    // Вывод всей информации о пользователи
+    // Вывод всей информации о пользователе
     public string Info()
     {
         return $"Имя: {name}\nВозраст: {age}\nГород: {city}\nЧерез 5 лет вам будет: {FutureAge()}\nСтатус: {GetAgeStatus()}\nХобби: {hobby}";
