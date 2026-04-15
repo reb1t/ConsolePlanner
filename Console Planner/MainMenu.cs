@@ -2,7 +2,10 @@ class MainMenu
 {
     private int choice;
     private int editChoice;
-    UserData u = new UserData();
+    private int ClassSelection;
+    private int Trait;
+    private int Origin;
+    Hero h = new Hero();
     public void Menu()
     {
         while (true)
@@ -30,7 +33,7 @@ class MainMenu
             {
                 Console.Clear();
 
-                Console.WriteLine(u.Info());
+                Console.WriteLine(h.Info());
 
                 Console.ReadKey();
             }
@@ -52,7 +55,7 @@ class MainMenu
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("1.Изменить имя\n2.Изменить возраст\n3.Изменить город\n4.Изменить хобби\n5.Изменить всё\n6.Назад");
+            Console.WriteLine("1.Изменить имя персонажа\n2.Изменить возраст персонажа\n3.Изменить происхождение\n4.Изменить черту характера\n5.Класс персонажа\n6.Изменить всё\n7.Назад");
             string input = Console.ReadLine();
 
             bool proverka = int.TryParse(input, out editChoice);
@@ -65,9 +68,9 @@ class MainMenu
             {
                 case 1:
                     {
-                        string name = GetNotEmptyString("Введите новое имя: ");
+                        string name = GetNotEmptyString("Введите новое имя персонажа: ");
                         Console.Clear();
-                        u.SetName(name);
+                        h.SetName(name);
                         Console.WriteLine("Имя изменено");
                         Console.ReadKey();
                         break;
@@ -77,7 +80,7 @@ class MainMenu
                     {
                         int age = GetAge();
                         Console.Clear();
-                        u.SetAge(age);
+                        h.SetAge(age);
                         Console.WriteLine("Данные изменены");
                         Console.ReadKey();
                         break;
@@ -86,18 +89,18 @@ class MainMenu
                 case 3:
                     {
                         Console.Clear();
-                        string city = GetNotEmptyString("Введите новый город: ");
-                        u.SetCity(city);
-                        Console.WriteLine("Данные изменены");
+                        string origin = OriginSelection();
+                        h.SetOrigin(origin);
+                        Console.WriteLine("Происхождение выбрана");
                         Console.ReadKey();
                         break;
                     }
                 case 4:
                     {
                         Console.Clear();
-                        string hobby = GetNotEmptyString("Введите новое хобби: ");
-                        u.SetHobby(hobby);
-                        Console.WriteLine("Данные изменены");
+                        string trait = TraitSelection();
+                        h.SetTrait(trait);
+                        Console.WriteLine("Черта характера выбрана");
                         Console.ReadKey();
                         break;
                     }
@@ -105,19 +108,31 @@ class MainMenu
                 case 5:
                     {
                         Console.Clear();
+                        string heroClass = HeroClass();
+                        h.SetHeroClass(heroClass);
+                        Console.WriteLine("Класс выбран");
+                        Console.ReadKey();
+                        break;
+                    }
+
+                case 6:
+
+                    {
+                        Console.Clear();
                         string name = GetNotEmptyString("Введите новое имя: ");
                         int age = GetAge();
                         Console.Clear();
-                        string city = GetNotEmptyString("Введите новый город: ");
+                        string origin = GetNotEmptyString("Введите новый происхождение: ");
                         Console.Clear();
-                        string hobby = GetNotEmptyString("Введите новое хобби: ");
+                        string trait = GetNotEmptyString("Введите новое черту характера: ");
                         Console.Clear();
-                        u.SetData(name, age, city, hobby);
+                        h.SetData(name, age, origin, trait);
                         Console.WriteLine("Данные изменены");
                         Console.ReadKey();
                         return;
                     }
-                case 6:
+
+                case 7:
                     {
                         return;
                     }
@@ -135,7 +150,7 @@ class MainMenu
     // изменения возраста
     public int GetAge()
     {
-        Console.Write("Введите новый возраст: ");
+        Console.Write("Введите возраст персонажа: ");
         int age;
         string ageinput = Console.ReadLine();
         bool ageCheck = int.TryParse(ageinput, out age);
@@ -160,5 +175,135 @@ class MainMenu
             text = Console.ReadLine();
         }
         return text;
+    }
+    public string HeroClass()
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("1.Воин\n2.Маг\n3.Вор\n4.Наемник\n5.Назад");
+            string input = Console.ReadLine();
+
+            bool proverka = int.TryParse(input, out ClassSelection);
+            if (proverka == false)
+            {
+                Console.Write("Введите пункт меню: ");
+                continue;
+            }
+            
+            switch(ClassSelection)
+            {
+                case 1:
+                {
+                    return "Воин";
+                }
+                case 2:
+                {
+                    return "Маг";    
+                }
+                case 3:
+                {
+                    return "Вор";   
+                }
+                case 4:
+                {
+                    return "Наемник";
+                }
+                default:
+                {
+                    Console.WriteLine("Такого пункта нет");
+                    Console.ReadKey();
+                    break;
+                }
+            }
+        }
+    }
+    public string TraitSelection()
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("1.Клептоман(бонус к воровству)\n2.Трусливость(бонус к побегу)\n3.Жадный(бонус к добыче золота)\n4.Здоровый(бонус к здоровью)\n5.Назад");
+            string input = Console.ReadLine();
+
+            bool proverka = int.TryParse(input, out Trait);
+            if (proverka == false)
+            {
+                Console.Write("Введите пункт меню: ");
+                continue;
+            }
+
+            switch (Trait)
+            {
+                case 1:
+                    {
+                        return "Клептоман";
+                    }
+                case 2:
+                    {
+                        return "Трусливость";
+                    }
+                case 3:
+                    {
+                        return "Жадный";
+                    }
+                case 4:
+                    {
+                        return "Здоровый";
+                    }
+                default:
+                    {
+                        Console.WriteLine("Такого пункта нет");
+                        Console.ReadKey();
+                        break;
+                    }
+            }
+        }
+    }
+    public string OriginSelection()
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("1.Деревня\n2.Город\n3.Столица\n4.Пустыня\n5.Джунгли\n6.Назад");
+            string input = Console.ReadLine();
+
+            bool proverka = int.TryParse(input, out Origin);
+            if (proverka == false)
+            {
+                Console.Write("Введите пункт меню: ");
+                continue;
+            }
+
+            switch (Origin)
+            {
+                case 1:
+                    {
+                        return "Деревня";
+                    }
+                case 2:
+                    {
+                        return "Город";
+                    }
+                case 3:
+                    {
+                        return "Столица";
+                    }
+                case 4:
+                    {
+                        return "Пустыня";
+                    }
+                case 5:
+                    {
+                        return "Джунгли";
+                    }
+                default:
+                    {
+                        Console.WriteLine("Такого пункта нет");
+                        Console.ReadKey();
+                        break;
+                    }
+            }
+        }
     }
 }

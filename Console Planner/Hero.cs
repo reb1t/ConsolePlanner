@@ -1,0 +1,43 @@
+//Класс куда попадают все данные персонажа которые он вводит
+class Hero
+{ 
+    private string name;
+    private int age;
+    private string origin;
+    private string trait;
+    private string heroClass;
+    // Вывод всей информации о персонаже
+    public string Info()
+    {
+        return $"Имя: {name}\nВозраст: {age}\nПроисхождение: {origin}\nВаш класс: {heroClass}\nЧерта характера: {trait}";
+    }
+    // Данные персонажа
+    public void SetData(string name, int age, string origin, string trait)
+    {
+        this.name = name;
+        this.age = age;
+        this.origin = origin;
+        this.trait = trait;
+    }
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+    public void SetAge(int age)
+    {
+        this.age = age;
+    }
+    public void SetOrigin(string origin)
+    {
+        this.origin = origin;
+    }
+    public void SetTrait(string trait)
+    {
+        this.trait = trait;
+    }
+    public void SetHeroClass(string heroClass)
+    {
+        this.heroClass = heroClass;
+    }
+
+}
