@@ -68,6 +68,7 @@ class MainMenu
             {
                 case 1:
                     {
+                        Console.Clear();
                         string name = GetNotEmptyString("Введите новое имя персонажа: ");
                         Console.Clear();
                         h.SetName(name);
@@ -78,6 +79,7 @@ class MainMenu
 
                 case 2:
                     {
+                        Console.Clear();
                         int age = GetAge();
                         Console.Clear();
                         h.SetAge(age);
@@ -110,6 +112,7 @@ class MainMenu
                         Console.Clear();
                         string heroClass = HeroClass();
                         h.SetHeroClass(heroClass);
+                        h.SetStartStats(heroClass);
                         Console.WriteLine("Класс выбран");
                         Console.ReadKey();
                         break;
@@ -122,11 +125,13 @@ class MainMenu
                         string name = GetNotEmptyString("Введите новое имя: ");
                         int age = GetAge();
                         Console.Clear();
-                        string origin = GetNotEmptyString("Введите новый происхождение: ");
+                        string origin = OriginSelection();
                         Console.Clear();
-                        string trait = GetNotEmptyString("Введите новое черту характера: ");
+                        string trait = TraitSelection();
                         Console.Clear();
-                        h.SetData(name, age, origin, trait);
+                        string heroClass = HeroClass();
+                        h.SetStartStats(heroClass);
+                        h.SetData(name, age, origin, trait, heroClass);
                         Console.WriteLine("Данные изменены");
                         Console.ReadKey();
                         return;
@@ -223,7 +228,7 @@ class MainMenu
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("1.Клептоман(бонус к воровству)\n2.Трусливость(бонус к побегу)\n3.Жадный(бонус к добыче золота)\n4.Здоровый(бонус к здоровью)\n5.Назад");
+            Console.WriteLine("Черта характера\n1.Клептоман(бонус к воровству)\n2.Трусливость(бонус к побегу)\n3.Жадный(бонус к добыче золота)\n4.Здоровый(бонус к здоровью)\n5.Назад");
             string input = Console.ReadLine();
 
             bool proverka = int.TryParse(input, out Trait);
@@ -265,7 +270,7 @@ class MainMenu
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("1.Деревня\n2.Город\n3.Столица\n4.Пустыня\n5.Джунгли\n6.Назад");
+            Console.WriteLine("Происхождение\n1.Деревня\n2.Город\n3.Столица\n4.Пустыня\n5.Джунгли\n6.Назад");
             string input = Console.ReadLine();
 
             bool proverka = int.TryParse(input, out Origin);
