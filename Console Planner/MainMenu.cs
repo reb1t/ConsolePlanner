@@ -1,24 +1,19 @@
 class MainMenu
 {
-    private int choice;
-    private int editChoice;
-    private int ClassSelection;
-    private int Trait;
-    private int Origin;
     Hero h = new Hero();
     public void Menu()
     {
         while (true)
         {
-            Console.Clear();
+             Console.Clear();
 
             Console.WriteLine("1.Ввести/изменить данные\n2.Показать данные\n0.Выход");
 
             string input = Console.ReadLine();
 
-            bool proverka = int.TryParse(input, out choice);
+            bool isValid = int.TryParse(input, out int choice);
 
-            if (proverka == false)
+            if (!isValid)
             {
                 Console.Write("Введите пункт меню: ");
                 continue;
@@ -39,7 +34,7 @@ class MainMenu
             }
             else if (choice == 1)
             {
-                pudMenu();
+                EditMenu();
             }
             else
             {
@@ -49,7 +44,7 @@ class MainMenu
         }
     }
     // подменю изменений данных
-    public void pudMenu()
+    public void EditMenu()
     {
 
         while (true)
@@ -58,8 +53,8 @@ class MainMenu
             Console.WriteLine("1.Изменить имя персонажа\n2.Изменить возраст персонажа\n3.Изменить происхождение\n4.Изменить черту характера\n5.Класс персонажа\n6.Изменить всё\n7.Назад");
             string input = Console.ReadLine();
 
-            bool proverka = int.TryParse(input, out editChoice);
-            if (proverka == false)
+            bool isValid = int.TryParse(input, out int editChoice);
+            if (!isValid)
             {
                 Console.Write("Введите пункт меню: ");
                 continue;
@@ -93,7 +88,7 @@ class MainMenu
                         Console.Clear();
                         string origin = OriginSelection();
                         h.SetOrigin(origin);
-                        Console.WriteLine("Происхождение выбрана");
+                        Console.WriteLine("Происхождение выбрано");
                         Console.ReadKey();
                         break;
                     }
@@ -156,14 +151,13 @@ class MainMenu
     public int GetAge()
     {
         Console.Write("Введите возраст персонажа: ");
-        int age;
-        string ageinput = Console.ReadLine();
-        bool ageCheck = int.TryParse(ageinput, out age);
-        while (!ageCheck || age <= 0 || age >= 120)
+        string ageInput = Console.ReadLine();
+        bool isValid = int.TryParse(ageInput, out int age);
+        while (!isValid || age <= 0 || age >= 120)
         {
             Console.Write("Введите возраст в цифрах(1-119): ");
-            ageinput = Console.ReadLine();
-            ageCheck = int.TryParse(ageinput, out age);
+            ageInput = Console.ReadLine();
+            isValid = int.TryParse(ageInput, out  age);
 
         }
         return age;
@@ -189,14 +183,14 @@ class MainMenu
             Console.WriteLine("1.Воин\n2.Маг\n3.Вор\n4.Наемник\n5.Назад");
             string input = Console.ReadLine();
 
-            bool proverka = int.TryParse(input, out ClassSelection);
-            if (proverka == false)
+            bool isValid = int.TryParse(input, out int classSelection);
+            if (!isValid)
             {
                 Console.Write("Введите пункт меню: ");
                 continue;
             }
             
-            switch(ClassSelection)
+            switch(classSelection)
             {
                 case 1:
                 {
@@ -231,14 +225,14 @@ class MainMenu
             Console.WriteLine("Черта характера\n1.Клептоман(бонус к воровству)\n2.Трусливость(бонус к побегу)\n3.Жадный(бонус к добыче золота)\n4.Здоровый(бонус к здоровью)\n5.Назад");
             string input = Console.ReadLine();
 
-            bool proverka = int.TryParse(input, out Trait);
-            if (proverka == false)
+            bool isValid = int.TryParse(input, out int trait);
+            if (!isValid)
             {
                 Console.Write("Введите пункт меню: ");
                 continue;
             }
 
-            switch (Trait)
+            switch (trait)
             {
                 case 1:
                     {
@@ -273,14 +267,14 @@ class MainMenu
             Console.WriteLine("Происхождение\n1.Деревня\n2.Город\n3.Столица\n4.Пустыня\n5.Джунгли\n6.Назад");
             string input = Console.ReadLine();
 
-            bool proverka = int.TryParse(input, out Origin);
-            if (proverka == false)
+            bool isValid = int.TryParse(input, out int origin);
+            if (!isValid)
             {
                 Console.Write("Введите пункт меню: ");
                 continue;
             }
 
-            switch (Origin)
+            switch (origin)
             {
                 case 1:
                     {
