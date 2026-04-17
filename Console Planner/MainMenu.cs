@@ -5,9 +5,9 @@ class MainMenu
     {
         while (true)
         {
-             Console.Clear();
+            Console.Clear();
 
-            Console.WriteLine("1.Ввести/изменить данные\n2.Показать данные\n0.Выход");
+            Console.WriteLine("1.Ввести/изменить данные\n2.Показать данные\n3.Выйти в бой\n0.Выход");
 
             string input = Console.ReadLine();
 
@@ -19,27 +19,41 @@ class MainMenu
                 continue;
             }
 
-            if (choice == 0)
+            switch (choice)
             {
-                Console.WriteLine("Выход из программы...");
-                break;
-            }
-            else if (choice == 2)
-            {
-                Console.Clear();
+                case 1:
+                    EditMenu();
+                    break;
 
-                Console.WriteLine(h.Info());
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine(h.Info());
+                    Console.ReadKey();
+                    break;
 
-                Console.ReadKey();
-            }
-            else if (choice == 1)
-            {
-                EditMenu();
-            }
-            else
-            {
-                Console.WriteLine("Такого пункта нет");
-                Console.ReadKey();
+                case 3:
+                    if (!h.IsCreated())
+                    {
+                        Console.WriteLine("Сначала создайте персонажа");
+                        Console.ReadKey();
+                        break;
+                    }
+                        Console.WriteLine("Бой скоро будет");
+                        Console.ReadKey();  
+                        break;
+                case 0:
+                    {
+                        Console.WriteLine("Выход из программы...");
+                        return;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Такого пункта нет....");
+                        Console.ReadKey();
+                        break;
+                    }
+
+
             }
         }
     }
@@ -125,8 +139,8 @@ class MainMenu
                         string trait = TraitSelection();
                         Console.Clear();
                         string heroClass = HeroClass();
-                        h.SetStartStats(heroClass);
                         h.SetData(name, age, origin, trait, heroClass);
+                        h.SetStartStats(heroClass);
                         Console.WriteLine("Данные изменены");
                         Console.ReadKey();
                         return;
