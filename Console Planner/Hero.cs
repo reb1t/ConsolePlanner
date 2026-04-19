@@ -154,4 +154,27 @@ class Hero
     {
         return !string.IsNullOrEmpty(heroClass);
     }
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health < 0)
+            health = 0;
+    }
+    public int GetAttack()
+    {
+        return damage;
+    }
+    public bool IsAlive()
+    {
+        return health > 0;
+
+    }
+    public void AddGold(int amount)
+    {
+        gold += amount;
+    }
+    public void AddExp(int amount)
+    {
+        exp += amount;
+    }
 }
